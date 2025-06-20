@@ -1,0 +1,87 @@
+{
+  "name": "jsonresume-theme-even",
+  "version": "0.23.0",
+  "description": "A flat JSON Resume theme, compatible with the latest resume schema",
+  "keywords": [
+    "resume",
+    "json",
+    "theme",
+    "flat",
+    "curriculum-vitae",
+    "cv"
+  ],
+  "homepage": "https://jsonresume-theme-even.rbrd.in/",
+  "bugs": {
+    "url": "https://github.com/rbardini/jsonresume-theme-even/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rbardini/jsonresume-theme-even.git"
+  },
+  "license": "MIT",
+  "author": "Rafael Bardini",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "main": "./dist/index.cjs",
+  "unpkg": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
+  "source": "index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "jsonresume-theme-even": "bin/cli.js"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "json2ts utils/schema.json",
+    "build": "vite build --watch",
+    "build-editor": "vite build editor",
+    "dev": "vite serve editor",
+    "format": "prettier .",
+    "prepare": "husky && npm run build",
+    "test": "vitest",
+    "type-check": "tsc"
+  },
+  "dependencies": {
+    "@rbardini/html": "^1.0.0",
+    "feather-icons": "^4.28.0",
+    "micromark": "^2.11.0",
+    "striptags": "^3.2.0"
+  },
+  "devDependencies": {
+    "@codemirror/commands": "6.6.1",
+    "@codemirror/lang-json": "6.0.1",
+    "@codemirror/theme-one-dark": "6.1.2",
+    "@codemirror/view": "6.33.0",
+    "@jsonresume/schema": "1.2.1",
+    "@types/feather-icons": "4.29.4",
+    "@vitest/coverage-v8": "1.6.0",
+    "codemirror": "6.0.1",
+    "debounce": "2.1.1",
+    "html-validate": "8.22.0",
+    "husky": "9.1.5",
+    "json-schema-to-typescript": "15.0.2",
+    "lint-staged": "15.2.10",
+    "prettier": "3.3.3",
+    "prettier-plugin-organize-imports": "4.0.0",
+    "prettier-plugin-packagejson": "2.5.2",
+    "typescript": "5.6.2",
+    "vite": "5.4.3",
+    "vite-plugin-dts": "4.0.0-beta.2",
+    "vite-plugin-static-copy": "1.0.6",
+    "vitest": "1.6.0"
+  }
+}
