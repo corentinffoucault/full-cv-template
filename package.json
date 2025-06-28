@@ -10,16 +10,7 @@
     "curriculum-vitae",
     "cv"
   ],
-  "homepage": "https://jsonresume-theme-even.rbrd.in/",
-  "bugs": {
-    "url": "https://github.com/rbardini/jsonresume-theme-even/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rbardini/jsonresume-theme-even.git"
-  },
   "license": "MIT",
-  "author": "Rafael Bardini",
   "type": "module",
   "exports": {
     ".": {
@@ -33,21 +24,9 @@
       }
     }
   },
-  "main": "./dist/index.cjs",
-  "unpkg": "./dist/index.umd.cjs",
-  "module": "./dist/index.js",
-  "source": "index.js",
-  "types": "./dist/index.d.ts",
-  "bin": {
-    "jsonresume-theme-even": "bin/cli.js"
-  },
-  "files": [
-    "bin",
-    "dist"
-  ],
   "scripts": {
     "prebuild": "json2ts utils/schema.json",
-    "build": "vite build --watch",
+    "build": "vite build",
     "build-editor": "vite build editor",
     "dev": "vite serve editor",
     "format": "prettier .",

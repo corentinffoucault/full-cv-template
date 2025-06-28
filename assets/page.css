@@ -97,7 +97,6 @@ ul {
   width: 200px;
   margin-left: 10px;
   word-wrap: break-word;
-  height: 1000px;
 }
 
 .headers {
@@ -120,9 +119,9 @@ ul {
 .right-column {
   width: auto;
   margin-bottom: 4em;
-  grid-template-rows: auto [content] 0;
   display: flex;
   margin-left: 10px;
+  flex-direction: column;
 }
 
 .workInfo {
@@ -158,6 +157,10 @@ ul {
 li::marker,
 .network {
   color: var(--color-secondary);
+}
+
+#workSkill {
+  padding-bottom: 2em;
 }
 
 .keyWord {
@@ -223,6 +226,10 @@ h4 {
 }
 
 h5 {
+  font-size: var(--scale1);
+}
+
+.simplifyWorkPosition {
   font-size: var(--scale1);
 }
 
@@ -292,6 +299,12 @@ blockquote > * + *,
   display: grid;
   gap: 1em;
   padding-top: 25px;
+}
+
+.stackSimple {
+  display: grid;
+  gap: 1em;
+  padding-top: 10px;
 }
 
 .icon-list {

@@ -4,33 +4,26 @@ import Duration from './duration.js'
 import Link from './link.js'
 
 /** @typedef {NonNullable<import('../schema.d.ts').ResumeSchema['work']>[number]} Work */
-/** @typedef {Pick<Work, 'languages' | 'env' | 'tools' | 'method' | 'team' | 'highlights' | 'location' | 'position' | 'startDate' | 'endDate' | 'summary'>} NestedWorkItem */
+/** @typedef {Pick<Work, 'languages' | 'env' | 'tools' | 'method' | 'team' | 'highlights' | 'location' | 'position' | 'startDate' | 'endDate' | 'summary' >} NestedWorkItem */
 /** @typedef {Pick<Work, 'description' | 'name' | 'url'> & { items: NestedWorkItem[] }} NestedWork */
 
 /**
  * @param {import('../schema.d.ts').ResumeSchema['work']} work
+ * @param {import('../schema.d.ts').ResumeSchema['labels']} labels
  * @returns {string | false}
  */
-export default function Work(work = [], label="Emplois", teamLabel="Equipe", language="Langage", toolsLabel="Outils", environment="Environnement", Methods="Méthodes") {
+export default function Work(work = [], labels) {
   const nestedWork = work.reduce((acc, { description, name, url, ...rest }) => {
     const prev = acc[acc.length - 1]
     if (prev && prev.name === name) prev.items.push(rest)
     else acc.push({ description, name, url, items: [rest] })
     return acc
   }, /** @type {NestedWork[]} */ ([]))
-/*
- "team": {
-        "back": 4,
-        "front": 3,
-        "fullStack": 0,
-        "type": "Agile scrum"
-      },
- */
   return (
     work.length > 0 &&
     html`
       <section id="work">
-        <h3>${label}</h3>
+        <h3>${labels.works}</h3>
         <div class="stack">
           ${nestedWork.map(
             ({ description, name, url, items = [] }) => html`
@@ -46,7 +39,7 @@ export default function Work(work = [], label="Emplois", teamLabel="Equipe", lan
                         <div>
                           <h5>${position}</h5>
                           ${team && html`<div class="workmeta">
-                            ${html`<div>${teamLabel} ${team.description}: ${team.back > 0 && html`${team.back} back`}${ team.front > 0 && team.back > 0  && html`, `}${team.front > 0 && html`${team.front} front`}${team.front + team.back > 0 && team.fullStack > 0 && html`, `}${ team.fullStack > 0 && html`${team.fullStack} fullStack`}</div>`}
+                            ${html`<div>${labels.team} ${team.description}: ${team.back > 0 && html`${team.back} back`}${ team.front > 0 && team.back > 0  && html`, `}${team.front > 0 && html`${team.front} front`}${team.front + team.back > 0 && team.fullStack > 0 && html`, `}${ team.fullStack > 0 && html`${team.fullStack} fullStack`}</div>`}
                           </div>`}
                            
                           <div class="workmeta">
@@ -69,16 +62,16 @@ export default function Work(work = [], label="Emplois", teamLabel="Equipe", lan
                           </div>
                           ${languages.length+tools.length+env.length+method.length > 0 && html`<div class="detail">
                               ${languages.length > 0 && html`<div class="keyWord minimal flex-container">
-                                <b>${language}</b>: ${languages?.join(', ')}
+                                <b>${labels.languages}</b>: ${languages?.join(', ')}
                               </div>`}
                               ${tools.length > 0 && html`<div class="keyWord minimal flex-container">
-                                <b>${toolsLabel}</b>: ${tools?.join(', ')}
+                                <b>${labels.tools}</b>: ${tools?.join(', ')}
                               </div>`}
                               ${env.length > 0 && html`<div class="keyWord minimal flex-container">
-                                <b>${environment}</b>: ${env?.join(', ')}
+                                <b>${labels.environment}</b>: ${env?.join(', ')}
                               </div>`}
                               ${method.length > 0 && html`<div class="keyWord minimal flex-container">
-                                <b>${Methods}</b>: ${method?.join(', ')}
+                                <b>${labels.methods}</b>: ${method?.join(', ')}
                               </div>`}
                           
                           </div>`}

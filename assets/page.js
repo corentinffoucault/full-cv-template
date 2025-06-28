@@ -18,13 +18,6 @@ class TimeDuration extends HTMLElement {
       months && pluralize(months, 'mo'),
       days && !years && !months && pluralize(days, 'day'),
     ].filter(Boolean)
-    if (!segments.length) return
-
-    const duration = document.createElement('time')
-    duration.classList.add('duration')
-    duration.textContent = '· '.concat(segments.join(' '))
-
-    this.append(' ', duration)
   }
 }
 

@@ -15,6 +15,15 @@ export interface ResumeSchema {
    * link to the version of the schema that can validate the resume
    */
   $schema?: string;
+  labels: {
+    works: string;
+    languages: string;
+    team: string;
+    tools: string;
+    environment: string;
+    methods: string;
+    worksSkill: string;
+  }
   basics?: {
     name?: string;
     /**
