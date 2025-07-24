@@ -11,23 +11,34 @@ import markdown from '../utils/markdown.js'
  * @returns {string | false}
  */
 export default function Work(work = [], labels) {
-  const highlights = work.reduce((acc, { highlights }) => {   
+  const highlightsByCat = work.reduce((acc, { highlights }) => {   
     if(highlights) {
       for (let item of highlights) {
-        acc.add(item.subject)
+        if (item.cat) {
+          if (!acc.has(item.cat)) {
+            acc.set(item.cat, new Set());
+          }
+          acc.get(item.cat).add(item.alternative || item.subject)
+        }
       }
     }
     return acc;
-  }, new Set())
+  }, new Map())
+  
   return (
     work.length > 0 &&
     html`
       <div id="workSkill">
-        <h3>${labels.worksSkill}</h3>
           <div class="highlights">
+          ${Array.from(highlightsByCat).map((cat)=> 
+            html`<h3>${cat[0]}</h3>
             <ul>
-              ${Array.from(highlights).map(highlight => html`<li>${markdown(highlight)}</li>`)}
-            </ul>
+              ${cat[1]?
+                Array.from(cat[1]).sort().map(highlight => html`<li>${markdown(highlight)}</li>`):'aa'
+              }
+            </ul>`
+            )
+          }
           </div>
       </div>
     `

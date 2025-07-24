@@ -4,7 +4,7 @@ import { html } from '@rbardini/html'
  * @param {import('../schema.d.ts').ResumeSchema['interests']} interests
  * @returns {string | false}
  */
-export default function Interests(interests = [], label="Passion") {
+export default function Interests(interests = [], label = "") {
   return (
     interests.length > 0 &&
     html`

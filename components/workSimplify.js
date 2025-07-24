@@ -12,7 +12,7 @@ import Link from './link.js'
  * @param {import('../schema.d.ts').ResumeSchema['labels']} labels
  * @returns {string | false}
  */
-export default function Work(work = [], labels) {
+export default function WorkSimplify(work = [], labels) {
   const nestedWork = work.reduce((acc, { description, name, url, ...rest }) => {
     const prev = acc[acc.length - 1]
     if (prev && prev.name === name) prev.items.push(rest)

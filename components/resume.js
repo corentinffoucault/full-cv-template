@@ -8,7 +8,7 @@ import Meta from './meta.js'
 import Skills2 from './skills2.js'
 import Work from './work.js'
 import WorkSimplify from './WorkSimplify.js'
-import workSkill from './workSkill.js'
+import WorkSkill from './WorkSkill.js'
 
 /**
  * @param {import('../schema.d.ts').ResumeSchema} resume
@@ -39,16 +39,14 @@ export default function Resume(resume, { css, js } = {}) {
         </div>
         <div class="body">
         <aside class="left-column">
-          ${Education(resume.education)}
-          ${Languages(resume.languages, resume.labels.languages)}
+          ${Education(resume.education, resume.labels.diploma)}
+          ${Languages(resume.languages, resume.labels.language)}
           ${Skills2(resume.skills)} 
           ${Skills2(resume.env)} 
-          ${Interests(resume.interests)}
+          ${Interests(resume.interests, resume.labels.interests)}
         </aside>
         <div class="right-column">
-          
-          ${workSkill(resume.work, resume.labels)} 
-          ${WorkSimplify(resume.work, resume.labels)} 
+          ${Work(resume.work, resume.labels)} 
         </div>
         </div>
       </body>

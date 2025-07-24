@@ -4,7 +4,7 @@ import Duration from './duration.js'
 import Link from './link.js'
 
 /** @typedef {NonNullable<import('../schema.d.ts').ResumeSchema['work']>[number]} Work */
-/** @typedef {Pick<Work, 'languages' | 'env' | 'tools' | 'method' | 'team' | 'highlights' | 'location' | 'position' | 'startDate' | 'endDate' | 'summary' >} NestedWorkItem */
+/** @typedef {Pick<Work, 'planguages' | 'env' | 'tools' | 'method' | 'team' | 'highlights' | 'location' | 'position' | 'startDate' | 'endDate' | 'summary' >} NestedWorkItem */
 /** @typedef {Pick<Work, 'description' | 'name' | 'url'> & { items: NestedWorkItem[] }} NestedWork */
 
 /**
@@ -34,7 +34,7 @@ export default function Work(work = [], labels) {
                 </header>
                 <div class="timeline">
                   ${items.map(
-                    ({ highlights = [], languages = [], tools = [], env = [], method = [], team, location, position, startDate, endDate, summary }) => html`
+                    ({ highlights = [], planguages = [], tools = [], env = [], method = [], team, location, position, startDate, endDate, summary }) => html`
                       <div>
                         <div>
                           <h5>${position}</h5>
@@ -60,9 +60,9 @@ export default function Work(work = [], labels) {
                               </ul>
                             `}
                           </div>
-                          ${languages.length+tools.length+env.length+method.length > 0 && html`<div class="detail">
-                              ${languages.length > 0 && html`<div class="keyWord minimal flex-container">
-                                <b>${labels.languages}</b>: ${languages?.join(', ')}
+                          ${planguages.length+tools.length+env.length+method.length > 0 && html`<div class="detail">
+                              ${planguages.length > 0 && html`<div class="keyWord minimal flex-container">
+                                <b>${labels.planguages}</b>: ${planguages?.join(', ')}
                               </div>`}
                               ${tools.length > 0 && html`<div class="keyWord minimal flex-container">
                                 <b>${labels.tools}</b>: ${tools?.join(', ')}

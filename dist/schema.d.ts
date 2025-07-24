@@ -17,12 +17,15 @@ export interface ResumeSchema {
   $schema?: string;
   labels: {
     works: string;
-    languages: string;
+    planguages: string;
     team: string;
     tools: string;
     environment: string;
     methods: string;
     worksSkill: string;
+    diploma: string;
+    language: string;
+    interests: string;
   }
   basics?: {
     name?: string;
@@ -129,13 +132,15 @@ export interface ResumeSchema {
      */
     highlights?: {
       subject: string;
+      cat?: string;
+      alternative?: string;
       detail: string[];
       [k: string]: unknown;
     }[];
     /**
      * specify multiple languages
      */
-    languages?: string[];
+    planguages?: string[];
     /**
      * specify working env
      */

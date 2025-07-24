@@ -2,14 +2,15 @@ import { html } from '@rbardini/html'
 
 /**
  * @param {import('../schema.d.ts').ResumeSchema['languages']} languages
+ * @param {import('../schema.d.ts').ResumeSchema['labels']['language']} language
  * @returns {string | false}
  */
-export default function Languages(languages = [], label="Langue") {
+export default function Languages(languages = [], language) {
   return (
     languages.length > 0 &&
     html`
         <div class="container languages-container">
-        <h3 class="bold">${label}</h3>
+        <h3 class="bold">${language}</h3>
 
         <ul class="minimal">
          ${languages.map(

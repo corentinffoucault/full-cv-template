@@ -5,14 +5,15 @@ import Link from './link.js'
 
 /**
  * @param {import('../schema.d.ts').ResumeSchema['education']} education
+ * @param {import('../schema.d.ts').ResumeSchema['labels']['diploma']} diploma
  * @returns {string | false}
  */
-export default function Education(education = [], Diploma="Diplome") {
+export default function Education(education = [], diploma) {
   return (
     education.length > 0 &&
     html`
       <div class="container education-container">
-        <h3 class="bold">Diploma</h3>
+        <h3 class="bold">${diploma}</h3>
       <section id="education">
         <div>
           ${education.map(

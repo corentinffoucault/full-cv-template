@@ -94,9 +94,13 @@ ul {
 
 .left-column {
   float: left;
-  width: 200px;
+  width: 205px;
   margin-left: 10px;
   word-wrap: break-word;
+}
+
+.vl {
+  border-right: 1px dashed gray;
 }
 
 .headers {
@@ -120,7 +124,7 @@ ul {
   width: auto;
   margin-bottom: 4em;
   display: flex;
-  margin-left: 10px;
+  margin-left: 20px;
   flex-direction: column;
 }
 
@@ -298,13 +302,14 @@ blockquote > * + *,
 .stack {
   display: grid;
   gap: 1em;
-  padding-top: 25px;
+  padding-top: 5px;
 }
 
 .stackSimple {
   display: grid;
   gap: 1em;
   padding-top: 10px;
+  padding-bottom: 20px;
 }
 
 .icon-list {
