@@ -24,6 +24,7 @@
       }
     }
   },
+  "typings": "dist/index",
   "scripts": {
     "prebuild": "json2ts utils/schema.json",
     "build": "vite build",

@@ -9,7 +9,7 @@ export default function Interests(interests = [], label = "") {
     interests.length > 0 &&
     html`
         <div class="container interests-container">
-          <h3>${label}</h3>
+          <h3 class="bold">${label}</h3>
           ${interests.map(
             ({ keywords = [], name })  => `
             <section class="item">

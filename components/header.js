@@ -23,41 +23,47 @@ export default function Header(basics = {}) {
   }
   return html`
     <header class="masthead">
-      ${image && html`<img src="${image}" alt="" />`}
-      <div>${name && html`<h1>${name}</h1>`} ${label && html`<h2>${label}</h2>`}</div>
-      <div>${birth && html`<h6>Age: ${calculateAge(new Date(birth))}</h6>`}</div>
-      ${summary && html`<article>${markdown(summary)}</article>`}
-      <ul class="icon-list">
-        ${location?.city &&
-        html`
-          <li>
-            ${Icon('map-pin')} ${location.city}${location.countryCode && html`, ${formatCountry(location.countryCode)}`}
-          </li>
-        `}
-        ${email &&
-        html`
-          <li>
-            ${Icon('mail')}
-            <a href="mailto:${email}">${email}</a>
-          </li>
-        `}
-        ${phone &&
-        html`
-          <li>
-            ${Icon('phone')}
-            <a href="tel:${phone.replace(/\s/g, '')}">${phone}</a>
-          </li>
-        `}
-        ${url && html`<li>${Icon('link')} ${Link(url)}</li>`}
-        ${profiles.map(
-          ({ network, url, username }) => html`
-            <li>
-              ${network && Icon(network, 'user')} ${Link(url, username)}
-              ${network && html`<span class="network">(${network})</span>`}
+
+      <div class="menu">
+        <div>${name && html`<h6>${name}</h6>`}</div>
+        <div>${birth && html`Age: ${calculateAge(new Date(birth))}`}</div>
+        ${summary && html`<article>${markdown(summary)}</article>`}
+        <ul class="icon-list">
+          ${location?.city &&
+          html`
+            <li style="font-size: 10px;">
+              ${Icon('map-pin')} ${location.city}${location.countryCode && html`, ${formatCountry(location.countryCode)}`}
             </li>
-          `,
-        )}
-      </ul>
+          `}
+          ${email &&
+          html`
+            <li>
+              ${Icon('mail')}
+              <a href="mailto:${email}">${email}</a>
+            </li>
+          `}
+          ${phone &&
+          html`
+            <li>
+              ${Icon('phone')}
+              <a href="tel:${phone.replace(/\s/g, '')}">${phone}</a>
+            </li>
+          `}
+          ${url && html`<li>${Icon('link')} ${Link(url)}</li>`}
+          ${profiles.map(
+            ({ network, url, username }) => html`
+              <li>
+                ${network && Icon(network, 'user')} ${Link(url, username)}
+                ${network && html`<span class="network">(${network})</span>`}
+              </li>
+            `,
+          )}
+        </ul>
+      </div>
+
+      <div class="content">
+        ${label && html`<h1>${label}</h1>`}
+      </div>
     </header>
   `
 }

@@ -94,7 +94,7 @@ ul {
 
 .left-column {
   float: left;
-  width: 205px;
+  width: 214px;
   margin-left: 10px;
   word-wrap: break-word;
 }
@@ -105,18 +105,6 @@ ul {
 
 .headers {
   width: auto;
-  grid-template-columns:
-    [full-start]
-    1fr
-    [main-start side-start]
-    minmax(min-content, 12em)
-    [side-end content-start]
-    minmax(min-content, 36em)
-    [main-end content-end]
-    1fr
-    [full-end];
-  grid-template-rows: auto [content] 0;
-  display: grid;
   padding-bottom: 10px;
 }
 
@@ -262,10 +250,10 @@ svg {
 
 .masthead {
   background: var(--color-dimmed);
-  display: inherit;
+  display: grid;
   gap: inherit;
-  grid-column: full;
-  grid-template-columns: inherit;
+  grid-template-areas: "menu content";
+  grid-template-columns: 1fr 3fr;
   padding: 1em 0;
   text-align: center;
   border-bottom-color: red;
@@ -273,9 +261,16 @@ svg {
   border-bottom-width: 1px;
 }
 
-.masthead > *,
-section {
-  grid-column: main;
+.masthead > div.menu {
+  grid-area: menu;
+  margin-left: 10px
+}
+.masthead > div.content {
+  text-align: center;
+  grid-area: content;
+}
+.masthead > div.content > h1 {
+  line-height: 100px;
 }
 
 .masthead > img {
@@ -378,11 +373,6 @@ blockquote > * + *,
 
   .masthead {
     text-align: inherit;
-  }
-
-  .masthead > *,
-  section {
-    grid-column: content;
   }
 
   .masthead img {

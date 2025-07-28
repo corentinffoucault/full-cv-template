@@ -45,8 +45,11 @@ export default function Resume(resume, { css, js } = {}) {
           ${Skills2(resume.env)} 
           ${Interests(resume.interests, resume.labels.interests)}
         </aside>
+        <div class="vl"></div>
         <div class="right-column">
-          ${Work(resume.work, resume.labels)} 
+                  
+          ${WorkSkill(resume.work, resume.labels)} 
+          ${WorkSimplify(resume.work, resume.labels)} 
         </div>
         </div>
       </body>
